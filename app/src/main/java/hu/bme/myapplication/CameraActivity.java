@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
+import java.net.ServerSocket;
+import java.net.Socket;
+
 import hu.bme.myapplication.streaming.SessionBuilder;
 import hu.bme.myapplication.streaming.gl.SurfaceView;
 import hu.bme.myapplication.streaming.rtsp.RtspServer;
@@ -29,15 +32,19 @@ import hu.bme.myapplication.streaming.rtsp.RtspServer;
  * A straightforward example of how to use the RTSP server included in libstreaming.
  */
 public class CameraActivity extends Activity implements View.OnClickListener, Session.Callback, SurfaceHolder.Callback {
-
+	private static boolean ServerInitiatedStoppage = false;
+	private static boolean IsStreaming = false;
 	private final static String TAG = "CameraActivity";
-
+	private Socket socket = new Socket();
 	private SurfaceView mSurfaceView;
 	private Session mSession;
+	private String destination_ip = "192.168.0.255"; //The server IP where the app gets the "matchcode"
+	private int specified_channel_port = 8820; //The port where the app is listening
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
+		ServerInitiatedStoppage = false;
+		IsStreaming = false;
 		requestPermission();
 		super.onCreate(savedInstanceState);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -54,6 +61,13 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 		editor.commit();
 		String textToast = "Serving at: rtsp://" + ip + ":" + Port_hardCoded;
 
+		try{
+			socket = new Socket(destination_ip,specified_channel_port);
+		}
+		catch (Exception e){
+
+		}
+
 		Toast.makeText(CameraActivity.this, textToast,
 				Toast.LENGTH_LONG).show();
 		// Configures the SessionBuilder
@@ -69,9 +83,17 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 		 mSurfaceView.getHolder().addCallback(this);
 		// Starts the RTSP server
 		Intent myIntent = new Intent(CameraActivity.this, RtspServer.class);
+		IsStreaming = true;
 		this.startService(myIntent);
 
 	}
+
+
+
+
+
+
+
 	private void requestPermission() {
 
 		ActivityCompat.requestPermissions(this,
@@ -87,10 +109,15 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed();
-		stopStreaming();
 
+		if(ServerInitiatedStoppage || !IsStreaming){
+			super.onBackPressed();
+		}
+
+		//stopStreaming();
 	}
+
+
 
 	private static final int PERMISSION_REQUEST_CODE = 200;
 
@@ -135,12 +162,18 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 
 	@Override
 	public void onSessionStarted() {
-		mSession.start();
+		String clientIp = "";
+		String textToast = "Client has connected:";
+
+		Toast.makeText(CameraActivity.this, textToast,
+				Toast.LENGTH_LONG).show();
+
 	}
 
 	@Override
 	public void onSessionStopped() {
-
+		ServerInitiatedStoppage = true;
+		onBackPressed();
 	}
 
 	@Override
