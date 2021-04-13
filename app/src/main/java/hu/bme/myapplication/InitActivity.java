@@ -16,10 +16,9 @@ public class InitActivity extends AppCompatActivity {
     private Button b = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_init);
-
     }
 
 }

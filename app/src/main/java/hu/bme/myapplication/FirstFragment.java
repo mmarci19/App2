@@ -34,7 +34,7 @@ public class FirstFragment extends Fragment {
 
             }
         });
-
+        /*
         view.findViewById(R.id.button_third).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,8 +42,16 @@ public class FirstFragment extends Fragment {
                 FirstFragment.this.startActivity(myIntent);
 
             }
-        });
+        });*/
 
+        view.findViewById(R.id.button_third).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getActivity(), Sender.class);
+                FirstFragment.this.startActivity(myIntent);
+
+            }
+        });
     }
 
 

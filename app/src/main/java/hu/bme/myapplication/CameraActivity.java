@@ -7,9 +7,12 @@ import hu.bme.myapplication.streaming.rtsp.RtspServer;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -38,8 +41,8 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 	private Socket socket = new Socket();
 	private SurfaceView mSurfaceView;
 	private Session mSession;
-	private String destination_ip = "192.168.0.255"; //The server IP where the app gets the "matchcode"
-	private int specified_channel_port = 8820; //The port where the app is listening
+	private String destination_ip = "192.168.0.107"; //The server IP where the app gets the "matchcode"
+	private int specified_channel_port = 8083; //The port where the app is listening
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 		editor.commit();
 		String textToast = "Serving at: rtsp://" + ip + ":" + Port_hardCoded;
 
-		try{
-			socket = new Socket(destination_ip,specified_channel_port);
-		}
-		catch (Exception e){
 
-		}
 
 		Toast.makeText(CameraActivity.this, textToast,
 				Toast.LENGTH_LONG).show();
@@ -89,8 +87,14 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 	}
 
 
-
-
+	public static void triggerRebirth(Context context) {
+		PackageManager packageManager = context.getPackageManager();
+		Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+		ComponentName componentName = intent.getComponent();
+		Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+		context.startActivity(mainIntent);
+		Runtime.getRuntime().exit(0);
+	}
 
 
 
@@ -103,6 +107,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 
 
 	public void stopStreaming(){
+
 		mSession.stop();
 		mSession.release();
 	}
@@ -113,7 +118,6 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 		if(ServerInitiatedStoppage || !IsStreaming){
 			super.onBackPressed();
 		}
-
 		//stopStreaming();
 	}
 
@@ -130,6 +134,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 
 	@Override
 	public void onDestroy() {
+
 		super.onDestroy();
 		mSession.release();
 		mSession.stop();
@@ -167,11 +172,13 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 
 		Toast.makeText(CameraActivity.this, textToast,
 				Toast.LENGTH_LONG).show();
+		IsStreaming = true;
 
 	}
 
 	@Override
 	public void onSessionStopped() {
+		triggerRebirth(this);
 		ServerInitiatedStoppage = true;
 		onBackPressed();
 	}

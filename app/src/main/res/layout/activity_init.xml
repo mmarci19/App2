@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".InitActivity">
 
-
-
-
-
     <include layout="@layout/content_init" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
