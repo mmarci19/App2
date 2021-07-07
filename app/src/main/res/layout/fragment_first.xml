@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".FirstFragment">
@@ -21,20 +22,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Recording"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+       />
 
     <Button
         android:id="@+id/button_third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Results"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_first" />
+        />
+
+    <Button
+        android:id="@+id/addcamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Camera"
+        />
+
+    <Button
+        android:id="@+id/add_match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD/EDIT MATCH"
+         />
+
+    <Button
+        android:id="@+id/view_all_matches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIEW ALL MATCHES"
+
+       />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -35,6 +35,7 @@ import hu.bme.myapplication.streaming.rtsp.RtspServer;
  * A straightforward example of how to use the RTSP server included in libstreaming.
  */
 public class CameraActivity extends Activity implements View.OnClickListener, Session.Callback, SurfaceHolder.Callback {
+
 	private static boolean ServerInitiatedStoppage = false;
 	private static boolean IsStreaming = false;
 	private final static String TAG = "CameraActivity";

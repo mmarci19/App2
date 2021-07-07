@@ -24,6 +24,9 @@
             android:name=".Sender"
             android:label="Sender"></activity>
         <activity
+            android:name=".MatchActivity"
+            android:label="MatchActivity"></activity>
+        <activity
             android:name=".ResultsActivity"
             android:label="@string/title_activity_results"></activity>
         <activity
