@@ -3,7 +3,9 @@ package hu.bme.myapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +23,12 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import static android.content.Context.WIFI_SERVICE;
+
 public class FirstFragment extends Fragment {
 
     private static final int YES_NO_CALL = 1;
+
 
     @Override
     public View onCreateView(
@@ -45,16 +50,6 @@ public class FirstFragment extends Fragment {
 
             }
         });
-        /*
-        view.findViewById(R.id.button_third).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(getActivity(), ResultsActivity.class);
-                FirstFragment.this.startActivity(myIntent);
-
-            }
-        });*/
-
 
 
         view.findViewById(R.id.add_match).setOnClickListener(new View.OnClickListener() {
@@ -68,7 +63,8 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.view_all_matches).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                Intent intent = new Intent(getActivity(), MatchAdapterActivity.class);
+                FirstFragment.this.startActivity(intent);
 
             }
         });
@@ -119,38 +115,12 @@ public class FirstFragment extends Fragment {
     }
 
     public void openCameraDialog(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this.getContext());
-        alertDialog.setTitle("Add Camera");
-        alertDialog.setMessage("?");
-
-        final EditText input = new EditText(this.getContext());
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-        input.setLayoutParams(lp);
-        alertDialog.setView(input);
-
-
-        String text = "";
-
-        alertDialog.setPositiveButton("ADD",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String text = input.getText().toString();
-                        Intent intent = new Intent(getActivity(), MatchActivity.class);
-                        FirstFragment.this.startActivity(intent);
-                    }
-                });
-
-        alertDialog.setNegativeButton("BACK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-        alertDialog.show();
+        Intent intent = new Intent(getActivity(), CamerasActivity.class);
+        WifiManager wm = (WifiManager) getActivity().getApplicationContext().getSystemService(WIFI_SERVICE);
+        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+        String port = "1234";
+        intent.putExtra("src", ip + ":" + port);
+        FirstFragment.this.startActivity(intent);
     }
 
 

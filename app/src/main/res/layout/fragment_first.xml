@@ -24,12 +24,7 @@
         android:text="Start Recording"
        />
 
-    <Button
-        android:id="@+id/button_third"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Results"
-        />
+
 
     <Button
         android:id="@+id/addcamera"
@@ -42,14 +37,14 @@
         android:id="@+id/add_match"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ADD/EDIT MATCH"
+        android:text="Add/View Match"
          />
 
     <Button
         android:id="@+id/view_all_matches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VIEW ALL MATCHES"
+        android:text="View All Matches"
 
        />
 

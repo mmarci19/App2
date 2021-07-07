@@ -36,16 +36,6 @@ public class MatchActivity extends AppCompatActivity {
         userText = findViewById(R.id.textuser);
 
     }
-
-
-    public void getUsers() {
-        //API hívás
-    }
-
-    public void getOwner() {
-        //API hívás
-    }
-
     private Match getMatch(int id) {
         Match match = null;
         if (this.matchService.exists(id)) {
@@ -54,6 +44,10 @@ public class MatchActivity extends AppCompatActivity {
             match = new Match();
         }
         return match;
+    }
+
+    private void addMatch(String user, String owner, int id){
+        this.matchService.addMatch();
     }
 
 

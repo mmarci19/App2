@@ -20,37 +20,33 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MatchAdapterActivity"></activity>
+        <activity android:name=".CamerasActivity" />
         <activity
             android:name=".Sender"
-            android:label="Sender"></activity>
+            android:label="Sender" />
         <activity
             android:name=".MatchActivity"
-            android:label="MatchActivity"></activity>
+            android:label="MatchActivity" />
         <activity
             android:name=".ResultsActivity"
-            android:label="@string/title_activity_results"></activity>
+            android:label="@string/title_activity_results" />
         <activity
             android:name=".SplashActivity"
-
             android:label="@string/title_activity_results">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".InitActivity"
             android:label="@string/title_activity_init"
-
-            android:theme="@style/SplashTheme">
-
-        </activity>
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".CameraActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
 
         <service android:name=".streaming.rtsp.RtspServer" />
     </application>
