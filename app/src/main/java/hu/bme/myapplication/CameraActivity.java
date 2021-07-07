@@ -42,12 +42,14 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 	private Socket socket = new Socket();
 	private SurfaceView mSurfaceView;
 	private Session mSession;
+	private CameraService cameraService = null;
 	private String destination_ip = "192.168.0.107"; //The server IP where the app gets the "matchcode"
 	private int specified_channel_port = 8083; //The port where the app is listening
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		ServerInitiatedStoppage = false;
+
 		IsStreaming = false;
 		requestPermission();
 		super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 		String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
 		// Sets the port of the RTSP server to 1234
 		Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+
 		String Port_hardCoded = "1234";
 		editor.putString(RtspServer.KEY_PORT, Port_hardCoded);
 		editor.commit();
