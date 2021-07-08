@@ -1,74 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#FFFFFF"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textcurrentowner"
-        android:text="Current Owner:"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textcurrentownervariable"
-        android:text="-"
-        />
+    android:orientation="vertical"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textowner"
-        android:text="Owner: "
-        />
-    <EditText
-        android:id="@+id/owner"
+    >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        android:inputType="text"
-      />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Owner"
-        android:id="@+id/btnowner"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textcurrentuser"
-        android:text="Current Users:"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textcurrentuservariable"
-        android:text="-"
+        <TextView
+            android:id="@+id/textcurrentowner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:text="Current Owner:"
+            android:textAlignment="gravity"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#E91E63"
+            android:textSize="22dp"
+            android:textStyle="normal" />
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textuser"
-        android:text="Add User:"
-        />
-    <EditText
-        android:id="@+id/users"
+        <TextView
+            android:id="@+id/textcurrentownervariable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="8sp"
+            android:text="-"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#E91E63"
+            android:textSize="30dp"
+            android:textStyle="normal|bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        android:inputType="text"
-   />
-    <Button
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/owner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btnowner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:text="Add Owner"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add User"
-        android:id="@+id/btnuser"
-        />
+        android:orientation="horizontal"
+        >
 
+        <TextView
+            android:id="@+id/textcurrentuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:text="Current Users:"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#E91E63"
+            android:textSize="22dp"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/textcurrentuservariable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="8sp"
+            android:text="-"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#E91E63"
+            android:textSize="30dp"
+            android:textStyle="normal|bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:inputType="text"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btnuser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:text="Add User"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 
 </LinearLayout>
