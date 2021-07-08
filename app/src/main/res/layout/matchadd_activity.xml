@@ -55,6 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:inputType="text"
+            android:hint="Owner"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary" />
 
@@ -116,6 +117,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:inputType="text"
+            android:hint="User"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary" />
 

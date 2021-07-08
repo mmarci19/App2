@@ -119,9 +119,9 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 	@Override
 	public void onBackPressed() {
 
-		if(ServerInitiatedStoppage || !IsStreaming){
+		//if(ServerInitiatedStoppage || !IsStreaming){
 			super.onBackPressed();
-		}
+		//}
 		//stopStreaming();
 	}
 

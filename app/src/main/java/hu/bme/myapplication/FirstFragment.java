@@ -80,9 +80,8 @@ public class FirstFragment extends Fragment {
 
 
     public void openDialog(){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this.getContext());
-        alertDialog.setTitle("Add Match");
-        alertDialog.setMessage("ID:");
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+        alertDialog.setTitle("Enter Match ID");
 
         final EditText input = new EditText(this.getContext());
 

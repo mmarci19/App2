@@ -4,12 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CamerasActivity">
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:textAlignment="center"
+    tools:contxt=".CamerasActivity">
 
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnaddcamera"
-        />
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="MATCH ID"
+            >
+
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btnaddcamera"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:background="#E91E63"
+            android:text="Add Camera"
+
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:capitalize="sentences"
+        android:editable="false"
+        android:padding="25dp"
+        android:shadowColor="#FFFFFF"
+        android:text="By clicking this button, this device will be registered as a camera to the analytics system."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary" />
+
+
 </LinearLayout>
+
+
+

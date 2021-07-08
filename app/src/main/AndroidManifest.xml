@@ -20,14 +20,20 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MatchAdapterActivity"></activity>
-        <activity android:name=".CamerasActivity" />
+        <activity android:name=".MatchAdapterActivity"
+
+            android:label="Match Details"
+
+            ></activity>
+        <activity android:name=".CamerasActivity"
+
+            android:label="Camera Settings" />
         <activity
             android:name=".Sender"
             android:label="Sender" />
         <activity
             android:name=".MatchActivity"
-            android:label="MatchActivity" />
+            android:label="Match Details" />
         <activity
             android:name=".ResultsActivity"
             android:label="@string/title_activity_results" />
@@ -46,7 +52,7 @@
             android:theme="@style/SplashTheme" />
         <activity
             android:name=".CameraActivity"
-            android:label="@string/app_name" />
+             />
 
         <service android:name=".streaming.rtsp.RtspServer" />
     </application>

@@ -14,12 +14,16 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
+        android:lineSpacingExtra="8sp"
         android:text="SPORT ANALYTICS"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="normal|bold" />
 
     <Button
         android:id="@+id/button_first"
@@ -59,10 +63,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:background="#FFFFFF"
-        android:padding="15dp"
 
+        android:padding="15dp"
         android:text="View All Matches"
         android:textColor="#3F51B5" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:textColor="#FFFFFF" />
 
 
 </LinearLayout>
