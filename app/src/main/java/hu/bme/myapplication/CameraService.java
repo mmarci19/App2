@@ -31,7 +31,7 @@ public class CameraService {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.0.248:5000/register_camera");
+                    URL url = new URL("https://192.168.0.248:5000/register_camera");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -73,7 +73,7 @@ public class CameraService {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.0.248:5000/start_recording");
+                    URL url = new URL("https://192.168.0.248:5000/start_recording");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

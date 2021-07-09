@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CamerasActivity extends AppCompatActivity {
     CameraService cameraService = new CameraService();
@@ -34,6 +35,8 @@ public class CamerasActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 addCamera(cameraIP);
+                Toast.makeText(CamerasActivity.this,"Camera: " + cameraIP + " registered to match: " + matchID,Toast.LENGTH_SHORT).show();
+
             }
         });
 

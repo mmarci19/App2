@@ -38,7 +38,7 @@ public class MatchService  {
         @Override
         public void run() {
             try {
-                URL url = new URL("http://192.168.0.248:5000/delete_match");
+                URL url = new URL("https://192.168.0.248:5000/delete_match");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -95,7 +95,7 @@ public class MatchService  {
         @Override
         public void run() {
             try {
-                URL url = new URL("http://192.168.0.248:5000/create_match");
+                URL url = new URL("https://192.168.0.248:5000/create_match");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -157,7 +157,7 @@ public class MatchService  {
         @Override
         public void run() {
             try {
-                URL url = new URL("http://192.168.0.248:5000/get_match");
+                URL url = new URL("https://192.168.0.248:5000/get_match");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -208,7 +208,7 @@ public class MatchService  {
         @Override
         public void run() {
             try {
-                URL url = new URL("http://192.168.0.248:5000/list_matches");
+                URL url = new URL("https://192.168.0.248:5000/list_matches");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -233,7 +233,8 @@ public class MatchService  {
 
     public boolean exists(String id){
         if(this.getMatch(new Integer(id)) != null) {
-            return true;
+            //return true - backendnél jó lesz
+            return false;
         }
         return false;
     }
