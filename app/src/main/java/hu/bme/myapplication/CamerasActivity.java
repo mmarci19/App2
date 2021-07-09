@@ -12,6 +12,7 @@ public class CamerasActivity extends AppCompatActivity {
     CameraService cameraService = new CameraService();
     String cameraIP = "";
     String matchID = "";
+    Button btn;
     public CamerasActivity(){
 
     }
@@ -29,14 +30,14 @@ public class CamerasActivity extends AppCompatActivity {
         String src = getIntent().getStringExtra("src");
         matchID = getIntent().getStringExtra("MATCHID");
         cameraIP = src;
-        Button btn = findViewById(R.id.btnaddcamera);
+        btn = findViewById(R.id.btnaddcamera);
         btn.setText("ADD CAMERA");
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
                 addCamera(cameraIP);
                 Toast.makeText(CamerasActivity.this,"Camera: " + cameraIP + " registered to match: " + matchID,Toast.LENGTH_SHORT).show();
-
+                btn.setAlpha(0.3f);
             }
         });
 
