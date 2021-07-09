@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class CamerasActivity extends AppCompatActivity {
     CameraService cameraService = new CameraService();
     String cameraIP = "";
-
+    String matchID = "";
     public CamerasActivity(){
 
     }
@@ -25,6 +26,7 @@ public class CamerasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cameras);
         String src = getIntent().getStringExtra("src");
+        matchID = getIntent().getStringExtra("MATCHID");
         cameraIP = src;
         Button btn = findViewById(R.id.btnaddcamera);
         btn.setText("ADD CAMERA");
@@ -34,6 +36,9 @@ public class CamerasActivity extends AppCompatActivity {
                 addCamera(cameraIP);
             }
         });
+
+        TextView textView = findViewById(R.id.textViewMatchID);
+        textView.setText(matchID);
 
     }
 

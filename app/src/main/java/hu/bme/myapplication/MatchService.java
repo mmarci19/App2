@@ -2,6 +2,7 @@ package hu.bme.myapplication;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.DataOutputStream;
@@ -16,11 +17,12 @@ public class MatchService  {
 
     private class DeleteRunnable implements Runnable {
         String result = "";
+        int _id;
 
-
-        public String deleteMatchHttp(){
+        public String deleteMatchHttp(int id){
             Thread thread = new Thread(this);
             thread.start();
+            _id=id;
             try {
                 thread.join();
                 return result;
@@ -44,9 +46,9 @@ public class MatchService  {
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
 
-                final int id = 1;
+
                 JSONObject jsonParam = new JSONObject();
-                jsonParam.put("id", id);
+                jsonParam.put("id", _id);
 
                 Log.i("JSON", jsonParam.toString());
                 DataOutputStream os = new DataOutputStream(conn.getOutputStream());
@@ -71,12 +73,17 @@ public class MatchService  {
 
     private class AddMatchRunnable implements Runnable {
         String result = "";
+        int _id;
+        String _owner;
+        ArrayList<String> _users;
 
-
-        public String addMatchHttp() {
+        public String addMatchHttp(int id, String owner, ArrayList<String> users) {
             Thread thread = new Thread(this);
             thread.start();
             try {
+                _id=id;
+                _owner=owner;
+                _users=users;
                 thread.join();
                 return result;
             } catch (InterruptedException e) {
@@ -101,9 +108,14 @@ public class MatchService  {
                 final String user = "USER";
 
                 JSONObject jsonParam = new JSONObject();
-                jsonParam.put("id", id);
-                jsonParam.put("owner", owner);
-                jsonParam.put("users", user);
+
+                jsonParam.put("id", _id);
+                jsonParam.put("owner", _owner);
+                JSONArray arr = new JSONArray();
+                for(int i=0; i<_users.size();i++){
+                    arr.put(_users.get(i));
+                }
+                jsonParam.put("users",arr);
 
                 Log.i("JSON", jsonParam.toString());
                 DataOutputStream os = new DataOutputStream(conn.getOutputStream());
@@ -127,9 +139,10 @@ public class MatchService  {
 
     private class GetMatchRunnable implements Runnable {
         String result = "";
-
-        public String getMatchHttp(){
+        int _id;
+        public String getMatchHttp(int id){
             Thread thread = new Thread(this);
+            _id = id;
             thread.start();
             try {
                 thread.join();
@@ -152,9 +165,9 @@ public class MatchService  {
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
 
-                final int id = 1;
+
                 JSONObject jsonParam = new JSONObject();
-                jsonParam.put("id", id);
+                jsonParam.put("id", _id);
 
                 Log.i("JSON", jsonParam.toString());
                 DataOutputStream os = new DataOutputStream(conn.getOutputStream());
@@ -218,8 +231,8 @@ public class MatchService  {
     private AddMatchRunnable addMatchRunnable = new AddMatchRunnable();
 
 
-    public boolean exists(int id){
-        if(this.getMatch(id) != null) {
+    public boolean exists(String id){
+        if(this.getMatch(new Integer(id)) != null) {
             return true;
         }
         return false;
@@ -227,7 +240,7 @@ public class MatchService  {
 
     public Match getMatch(int id){
 
-        String result = this.getMatchRunnable.getMatchHttp();
+        String result = this.getMatchRunnable.getMatchHttp(id);
         return new Match();
         //return 1 match from Backend using API
     }
@@ -235,17 +248,17 @@ public class MatchService  {
     public ArrayList<Match> getMatches(){
         //return all matches from Backend
         String result = this.getMatchesRunnable.getAllMatchesHttp();
+
         return new ArrayList<Match>();
     }
 
-    public void addMatch(){
-        String result = this.addMatchRunnable.addMatchHttp();
+    public void addMatch(int id, String owner, ArrayList<String> users){
+        String result = this.addMatchRunnable.addMatchHttp(id,owner,users);
     }
 
-
-
-    public void deleteMatch(int id){
-       String result = this.deleteRunnable.deleteMatchHttp();
+    public void deleteMatch(int id)
+    {
+       String result = this.deleteRunnable.deleteMatchHttp(id);
     }
 
 }

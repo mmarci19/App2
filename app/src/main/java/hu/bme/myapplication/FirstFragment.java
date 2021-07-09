@@ -98,7 +98,9 @@ public class FirstFragment extends Fragment {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String text = input.getText().toString();
+
                         Intent intent = new Intent(getActivity(), MatchActivity.class);
+                        intent.putExtra("MATCHID",text);
                         FirstFragment.this.startActivity(intent);
                     }
                 });
@@ -114,12 +116,44 @@ public class FirstFragment extends Fragment {
     }
 
     public void openCameraDialog(){
-        Intent intent = new Intent(getActivity(), CamerasActivity.class);
-        WifiManager wm = (WifiManager) getActivity().getApplicationContext().getSystemService(WIFI_SERVICE);
-        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
-        String port = "1234";
-        intent.putExtra("src", ip + ":" + port);
-        FirstFragment.this.startActivity(intent);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AlertDialogStyle);
+        alertDialog.setTitle("Enter Match ID");
+
+        final EditText input = new EditText(this.getContext());
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+
+
+        String text = "";
+
+
+        alertDialog.setPositiveButton("ADD",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String text = input.getText().toString();
+                        WifiManager wm = (WifiManager) getActivity().getApplicationContext().getSystemService(WIFI_SERVICE);
+                        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
+                        String port = "1234";
+                        Intent intent = new Intent(getActivity(), CamerasActivity.class);
+                        intent.putExtra("MATCHID",text);
+                        intent.putExtra("src", ip + ":" + port);
+                        FirstFragment.this.startActivity(intent);
+                    }
+                });
+
+        alertDialog.setNegativeButton("BACK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.show();
+
     }
 
 

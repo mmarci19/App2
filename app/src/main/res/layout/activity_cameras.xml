@@ -16,15 +16,6 @@
         android:layout_margin="20dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:hint="MATCH ID"
-            >
-
-
-        </EditText>
 
         <Button
             android:id="@+id/btnaddcamera"
@@ -47,10 +38,20 @@
         android:editable="false"
         android:padding="25dp"
         android:shadowColor="#FFFFFF"
-        android:text="By clicking this button, this device will be registered as a camera to the analytics system."
+        android:text="By clicking this button, this device will be registered as a camera to the analytics system with the match ID:"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary" />
 
+    <TextView
+        android:id="@+id/textViewMatchID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
+        android:shadowColor="#FFFFFF"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
 
 </LinearLayout>
 

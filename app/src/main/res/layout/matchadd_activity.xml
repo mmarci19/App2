@@ -90,21 +90,20 @@
             android:textStyle="normal" />
 
 
-        <TextView
-            android:id="@+id/textcurrentuservariable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:lineSpacingExtra="8sp"
-            android:text="-"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#E91E63"
-            android:textSize="30dp"
-            android:textStyle="normal|bold" />
-
     </LinearLayout>
 
+
+    <ListView
+        android:id="@+id/mainListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="8sp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#E91E63"
+        android:textSize="30dp"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,6 +131,16 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"
+        android:text="Register"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
 

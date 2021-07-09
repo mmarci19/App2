@@ -105,7 +105,7 @@ public class CameraActivity extends Activity implements View.OnClickListener, Se
 	private void requestPermission() {
 
 		ActivityCompat.requestPermissions(this,
-				new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+				new String[]{Manifest.permission.INTERNET, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},
 				PERMISSION_REQUEST_CODE);
 	}
 
